@@ -24,18 +24,21 @@ export const getUser = async (req, res) => {
 
 export const addUser = async (req, res) => {
   const { user_name, email, password } = req.body;
-  if (!user_name && !email && !password) {
+  if (!user_name || !email || !password) {
     return res
       .status(404)
       .json({ success: false, message: "Fields are required" });
   }
   try {
     const created = await User.create(req.body);
+    console.log('after created');
     if (!created) {
       return res
         .status(400)
         .json({ success: false, message: "User not created" });
     }
+    console.log('code 201');
+
     res.status(201).json({ success: true, message: "User Created" });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

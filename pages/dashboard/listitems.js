@@ -9,16 +9,17 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-
+import { useRouter } from 'next/router';
+const router  = useRouter()
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton >
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton onClick={()=>router.push('/analytics')}>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>

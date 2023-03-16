@@ -2,6 +2,7 @@ import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
+import ListItemButton from '@mui/material/ListItemButton';
 import Box from '@mui/material/Box';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,16 +10,27 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listitems';
+import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
+import PeopleIcon from '@mui/icons-material/People';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import LayersIcon from '@mui/icons-material/Layers';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import Analytics from './analytics';
+import { useRouter } from 'next/router';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
 
@@ -85,6 +97,7 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
+ const  router=useRouter();
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -142,9 +155,40 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+          <React.Fragment>
+    <ListItemButton >
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
+    </ListItemButton>
+    <ListItemButton onClick={()=>router.push('/exercise')}>
+      <ListItemIcon>
+        <DownhillSkiingIcon />
+      </ListItemIcon>
+      <ListItemText primary="Exercise " />
+    </ListItemButton>
+    <ListItemButton onClick={()=>router.push('/addexercise')}>
+      <ListItemIcon>
+      <AddCircleOutlineIcon />
+      </ListItemIcon>
+      <ListItemText primary="Add Exercise" />
+    </ListItemButton>
+    <ListItemButton onClick={()=>router.push('/analytics')}>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Analytics" />
+    </ListItemButton>
+    <ListItemButton onClick={()=>router.push('/logout')}>
+      <ListItemIcon>
+      <LogoutIcon />
+      </ListItemIcon>
+      <ListItemText primary="Logout" />
+    </ListItemButton>
+  </React.Fragment>
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+           
           </List>
         </Drawer>
         <Box
@@ -204,5 +248,6 @@ function DashboardContent() {
 }
 
 export default function Dashboard() {
+
   return <DashboardContent />;
 }

@@ -1,30 +1,33 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from 'next/link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useRouter } from 'next/router'
-import useNotify from '../../hooks/usePopup';
-import { url } from '../../utils/url';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "next/link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useRouter } from "next/router";
+import useNotify from "../../hooks/usePopup";
+import { url } from "../../utils/url";
+import axios from "axios";
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link href="#">
-        Exercise Tracker
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link href="#">Exercise Tracker</Link> {new Date().getFullYear()}
+      {"."}
     </Typography>
   );
 }
@@ -32,31 +35,43 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
-  const {successMessage,errorMessage} = useNotify()
-  const [userData,setUserData] = React.useState({user_name:'',email:'',password:''});
+  const { successMessage, errorMessage } = useNotify();
+  const [userData, setUserData] = React.useState({
+    user_name: "",
+    email: "",
+    password: "",
+  });
   const router = useRouter();
-  
-  const handleChange = (e)=>{
+
+  const handleChange = (e) => {
     e.preventDefault();
-    setUserData({...userData,[e.target.name]:e.target.value.toLowerCase()});
-  }
-  const handleSubmit = async()=>{
-  
-    try{
-      const response = await axios.post(`${url}api/login`,userData);
+    setUserData({ ...userData, [e.target.name]: e.target.value.toLowerCase() });
+  };
+  const handleSubmit = async () => {
+    console.log(userData);
+    try {
+      console.log("berfore res");
+
+      const response = await axios.post(`${url}api/register`, userData);
+      console.log("after res");
+
       console.log(response);
-      if(response.data.success){
-        setUserData({user_name:'',email:'',password:''})
-        await router.push('/login')
-        return successMessage(response.data.message)
-      }else{
-        return errorMessage(response.data.message)
+      if (response.data.success) {
+        console.log("res success");
+
+        setUserData({ user_name: "", email: "", password: "" });
+        await router.push("/login");
+        return successMessage(response.data.msg);
+      } else {
+        console.log("res error");
+
+        return errorMessage(response.data.msg);
       }
-    }catch(error){
-      errorMessage(error.response.data.message);
-    }   
-   
-  }
+    } catch (error) {
+      console.log(error.response.data.msg);
+      errorMessage(error.response.data.msg);
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -65,12 +80,12 @@ export default function Register() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -81,7 +96,7 @@ export default function Register() {
               <Grid item xs={12}>
                 <TextField
                   autoComplete="username"
-                  name="username"
+                  name="user_name"
                   required
                   fullWidth
                   id="firstName"
@@ -89,7 +104,6 @@ export default function Register() {
                   autoFocus
                   onChange={handleChange}
                   value={userData.user_name}
-                  
                 />
               </Grid>
               {/* <Grid item xs={12} sm={6}>
@@ -131,7 +145,9 @@ export default function Register() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  control={
+                    <Checkbox value="allowExtraEmails" color="primary" />
+                  }
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
@@ -147,9 +163,7 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" >
-                  Already have an account? Sign in
-                </Link>
+                <Link href="/login">Already have an account? Sign in</Link>
               </Grid>
             </Grid>
           </Box>
