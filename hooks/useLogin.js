@@ -19,18 +19,19 @@ export default function useLogin() {
     console.log(userData);
     try {
       const { data: res } = await axios.post(`${url}api/login`, userData);
-    console.log('res');
+      console.log('res',res);
 
       if (res.success) {
         setCookie("token", res.token, { maxAge: 60 * 60 * 24 * 30 });
         localStorage.setItem("user", JSON.stringify(res.data));
         await router.push(`/dashboard`);
         successMessage(res.msg);
-      } else {
+      }
+       else {
         errorMessage(res.msg);
       }
     } catch (error) {
-      errorMessage(error.msg);
+      errorMessage(error.response.data.msg);
     }
   };
 

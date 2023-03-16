@@ -13,6 +13,7 @@ export default function useNotify(){
     }
     
     const errorMessage = (msg)=>{
+        console.log(msg);
         return enqueueSnackbar(msg,{variant:'error'})
     }
     

@@ -8,7 +8,8 @@ import Main from '@/components/home/Main'
 export default function Home() {
   return (
     <>
-    <Main />
+    <h1>hello</h1>
+    {/* <Main /> */}
 </>
   )
 }
