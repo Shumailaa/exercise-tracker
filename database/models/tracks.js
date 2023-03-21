@@ -8,7 +8,6 @@ const TrackSchema=new Schema({
     },
     activity:{
         type:String,
-        enum:["run","walk","swim"],
         required:true,
     },
     duration:{

@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import useNotify from "../../hooks/usePopup";
 import { url } from "../../utils/url";
 import axios from "axios";
-
+import styles from './Register.module.css'
 function Copyright(props) {
   return (
     <Typography
@@ -26,7 +26,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link href="#">Exercise Tracker</Link> {new Date().getFullYear()}
+      <Link href="#" className={styles.link}>Exercise Tracker</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -79,13 +79,13 @@ export default function Register() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 5,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -143,27 +143,20 @@ export default function Register() {
                   value={userData.password}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+             
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2,}}
               onClick={handleSubmit}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/login">Already have an account? Sign in</Link>
+            <Grid container justifyContent="flex-end"  >
+              <Grid item >
+                <Link href="/login" className={styles.link}>Already have an account? Sign in</Link>
               </Grid>
             </Grid>
           </Box>

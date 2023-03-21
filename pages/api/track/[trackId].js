@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'DELETE':
             deleteTrack(req, res);
+            
             break;
         case 'PATCH':
             updateTrack(req, res);

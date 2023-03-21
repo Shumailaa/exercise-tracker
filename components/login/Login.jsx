@@ -28,13 +28,13 @@ const { handleChange,handleSubmit,userData}=useLogin();
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             <LockIcon />
           </Avatar>
           <Typography component="h1" variant="h5">

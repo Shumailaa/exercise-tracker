@@ -57,15 +57,17 @@ export const addTrack = async (req, res) => {
   }
 };
 export const deleteTrack = async (req, res) => {
-  const { id } = req.query;
+  const {trackId}  = req.query;
+
   try {
-    const track = await Track.findByIdAndDelete(id);
+    const track = await Track.findByIdAndDelete(trackId);
+   
     if (!track) { return res.status(404).json({ success: false, message: 'Activity not deleted' }) }
     return res.status(200).json({ success: true, message: 'Activity deleted', data: track });
   } catch (err) { res.status(500).json({ success: false, message: err.name }) }
 };
 export const updateTrack = async (req, res) => {
-  const { id } = req.query;
+  const { trackId } = req.query;
   try {
     const updated = await Track.findByIdAndUpdate(id, req.body, { new: true });
     if (!updated) { return res.status(404).json({ success: false, message: 'Activity not updated' }) }

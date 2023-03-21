@@ -1,7 +1,7 @@
 import {useSnackbar} from 'notistack';
 
 
-export default function useNotify(){
+export default function usePopup(){
     const {enqueueSnackbar} = useSnackbar();
 
     const successMessage = (msg)=>{
@@ -13,7 +13,7 @@ export default function useNotify(){
     }
     
     const errorMessage = (msg)=>{
-        console.log(msg);
+        console.log("POPUP ERRROR",msg);
         return enqueueSnackbar(msg,{variant:'error'})
     }
     
