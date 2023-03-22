@@ -28,7 +28,7 @@ if(!check){
     }
 }
 
-const jwtToken= await jwt.sign(payload, process.env.jwtSecretKey, {expiresIn: 360000});
+const jwtToken= await jwt.sign(payload, "exercise", {expiresIn: 360000});
 
 return res.status(200).json({success:true,msg:"Logged in successfully",token:jwtToken,data:findUser})
 

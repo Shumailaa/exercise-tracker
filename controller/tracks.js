@@ -5,7 +5,7 @@ import Track from "../database/models/tracks";
 export const getAllTracks = async (req, res) => {
   try {
     const token = req.query.token;
-    const verified = jwt.verify(token, process.env.jwtSecretKey);
+    const verified = jwt.verify(token, "exercise");
     const allTracks = await Track.find({user:verified.user.id}).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: allTracks });
   } catch (error) {
@@ -35,10 +35,10 @@ export const addTrack = async (req, res) => {
   }
   try {
     const token = req.cookies.token;
-    const verified = await jwt.verify(token, process.env.jwtSecretKey);
+    const verified = await jwt.verify(token, "exercise");
     console.log("Add track",verified.user.id)
     console.log("Add track token",token)
-    console.log(process.env.jwtSecretKey);
+    // console.log(process.env.jwtSecretKey);
     const created = await Track.create({
       description,
       activity,
