@@ -20,9 +20,9 @@ const TrackSchema=new Schema({
     },
     user:{
         type:Schema.Types.ObjectId,
-        ref:'users',
+        required:true,
     }
-
+  
 })
 const Track=mongoose.models.track||mongoose.model('track',TrackSchema);
 export default Track;

@@ -6,7 +6,7 @@ export default function useAuth(){
     const handleLogout = ()=>{
         deleteCookie('token',{maxAge:0})
         localStorage.removeItem('user')
-        router.push('/login');
+        router.push('/');
     }
     const checkToken = ()=>{
         return getCookie('token')

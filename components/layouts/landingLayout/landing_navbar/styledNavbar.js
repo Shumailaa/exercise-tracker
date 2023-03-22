@@ -1,11 +1,15 @@
 import {Box, styled} from '@mui/material';
 
+
 export const StyledNavbar = styled(Box)(({theme})=>({
     display:'flex',
     justifyContent:'space-between',
     alignItems:'center',
     padding:'0px 40px',
     height:'6rem',
+    boxShadow:3,
+   color:'primary.main'
+    
 }))
 
 export const Logo = styled(Box)(({theme})=>({

@@ -1,39 +1,23 @@
-import {MdDashboard,MdListAlt,MdAddToPhotos, MdCalendarMonth, MdSettings,MdPerson,MdLogout} from 'react-icons/md'
+import AddIcon from '@mui/icons-material/Add';
+import FormatListNumberedRtlIcon from '@mui/icons-material/FormatListNumberedRtl';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+;
 export const items = [
     {
-        icon:<MdDashboard />,
+        icon:<DashboardIcon />,
         name:'Dashoard',
         to:'/dashboard'
     },
     {
-        icon:<MdListAlt />,
+        icon:<FormatListNumberedRtlIcon />,
         name:'Activities',
         to:'/dashboard/activities'
     },
     {
-        icon:<MdAddToPhotos />,
+        icon:<AddIcon />,
         name:'Add Activity',
         to:'/dashboard/addnew'
     },
-    {
-        icon:<MdAddToPhotos />,
-        name:'Logout',
-        to:'/'
-    },
-    // // {
-    // //     icon:<MdCalendarMonth />,
-    // //     name:'Calendar',
-    // //     to:'/dashboard/calendar'
-    // // },
-    // {
-    //     icon:<MdPerson/>,
-    //     name:'Profile',
-    //     to:'/dashboard/profile'
-    // },
-    // {
-    //     icon:<MdSettings />,
-    //     name:'Setting',
-    //     to:'/dashboard/setting'
-    // }
-    
+  
+   
 ]

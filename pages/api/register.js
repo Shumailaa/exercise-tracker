@@ -1,14 +1,14 @@
 import User from "@/database/models/users";
 import dbConnect from "../../database/dbConnect";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+
 
 export default async function register(req, res) {
   dbConnect.connect();
   const { user_name, email, password } = req.body;
   console.log(req.body);
   if (!email || !password || !user_name) {
-    return res.status(404).json({ success: false, msg: "Fieled are required" });
+    return res.status(404).json({ success: false, msg: "Fields are required" });
   }
   try {
     const findUser = await User.findOne({ email: email });

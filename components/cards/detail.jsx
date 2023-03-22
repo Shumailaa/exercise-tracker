@@ -1,6 +1,6 @@
-import { Box, Divider, IconButton, Typography, Modal, Button } from "@mui/material";
+import { Box, Divider, Typography, Modal, Button } from "@mui/material";
 import React from "react";
-import { MdDelete, MdEdit, MdVisibility } from "react-icons/md";
+
 import { useRouter } from 'next/router';
 import useModal from '../../hooks/useModal';
 import {
@@ -10,8 +10,6 @@ import {
     CardCaption,
     CardBody,
       CardDate,
-    //   Actions,
-    // CardFooter
 } from "./styledCard";
 
 const style = {
@@ -29,14 +27,14 @@ const style = {
 export default function Detail({ card }) {
     const router = useRouter();
     const { handleDelete, handleOpen, handleClose, open } = useModal();
-    // const handleEdit = (id) => { router.push(`/dashboard/addnew/${id}`) }
+    const handleEdit = (id) => { router.push(`/dashboard/addnew/${id}`) }
 
     return (
         <>
             <DetailContainer>
                 <CardDetail>
                     <CardHeader>
-                        {/* <Typography variant="h5">{card.name}</Typography> */}
+                  
                         <Typography variant="h5">{card.duration}min</Typography>
                     </CardHeader>
                     <CardCaption>
@@ -57,23 +55,12 @@ export default function Detail({ card }) {
                     </CardCaption>
                     <Divider />
                     <CardBody variant="body1">{card.description}</CardBody>
-                    {/* <CardFooter>
-      <Actions>
-        <IconButton onClick={() => handleEdit(card._id)}>
-          <MdEdit />
-        </IconButton>
-        <IconButton onClick={() => handleOpen(card._id)}>
-          <MdDelete />
-        </IconButton>
-        <IconButton onClick={() => router.push(`/dashboard/activities/${card._id}`)}>
-          <MdVisibility />
-        </IconButton>
-      </Actions> */}
+              
 
                     <CardDate variant="body2" color={"text.secondary"}>
                         {card.date}
                     </CardDate>
-                    {/* </CardFooter> */}
+                
                 </CardDetail>
             </DetailContainer>
             <div>

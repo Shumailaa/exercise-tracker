@@ -3,9 +3,10 @@
     width: 100%;
 }
 .navbarContainer{
-    height: 8vh;
-    box-shadow: 1px 1px 1px gray;
-    /* border-bottom: 1px solid lightgrey; */
+    height: 12vh;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #dde4f6;
+    /* border-bottom: 1px solid #24a0ed; */
 }
 .sectionContainer{
     display: flex;
@@ -15,7 +16,7 @@
 .sidebarContainer{
     width: max-content;
     overflow-y: auto;
-    box-shadow: 1px 3px 3px rgb(181, 202, 239);
+    box-shadow: 1px 3px 3px rgb(122, 152, 205);
     z-index: 999;
     transition: 0.3s;
 }
@@ -28,5 +29,5 @@
 @media (max-width:600px){
     .navbarContainer{height: 7vh;}
     .sectionContainer{height: calc(100vh - 7vh);}
-    .sidebarContainer{position: absolute; bottom: 0; top: 7vh; left: 0px; background-color: white;}
+    .sidebarContainer{position: absolute; bottom: 0; top: 7vh; left: 0px; background-color: rgb(123, 192, 215);}
 }

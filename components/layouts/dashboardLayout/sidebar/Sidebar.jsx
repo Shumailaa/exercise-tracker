@@ -18,10 +18,11 @@ function Sidebar({ hide, handleSidebarLinks }) {
             href={item.to}
             key={index}
             className={styles.link}
-            style={{backgroundColor:'green'}}
+            style={{backgroundColor:'blue'}}
             onClick={handleSidebarLinks}
           >
-            <Typography component={'li'} sx={{backgroundColor: router.pathname === item.to ?  '#f4f4f4' :''}}>
+            <Typography component={'li'} sx={
+              {backgroundColor: router.pathname === item.to ?  '#dde4f6' :''}}>
               <Typography> {item.icon} </Typography> <Typography style={{ display: hide }}>{item.name} </Typography>
             </Typography>
           </Link>

@@ -13,8 +13,7 @@ export default function LandingNavbar() {
     <StyledNavbar>
       <Logo onClick={gotoHome} component={'div'}>
         <Typography variant='h4' sx={{letterSpacing:'2px'}}>Exercise Tracker</Typography>
-        {/* <Typography variant='caption' sx={{position:'absolute',right:'0',bottom:'-15px',letterSpacing:'2px'}}>Tracker</Typography> */}
-      </Logo>
+        </Logo>
       <NavbarButtons>
         <Button variant='outlined' color='inherit' size='medium' startIcon={<HowToRegIcon />} onClick={gotoSignup}>Register</Button>
         <Button variant='contained'  size='medium' startIcon={<LoginIcon />} onClick={gotoSignin}>Log in</Button>

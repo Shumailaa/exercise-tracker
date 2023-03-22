@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -16,7 +14,7 @@ import { useRouter } from "next/router";
 import useNotify from "../../hooks/usePopup";
 import { url } from "../../utils/url";
 import axios from "axios";
-import styles from './Register.module.css'
+import styles from "./Register.module.css";
 function Copyright(props) {
   return (
     <Typography
@@ -26,7 +24,10 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link href="#" className={styles.link}>Exercise Tracker</Link> {new Date().getFullYear()}
+      <Link href="#" className={styles.link}>
+        Exercise Tracker
+      </Link>{" "}
+      {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -100,24 +101,12 @@ export default function Register() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Name"
                   autoFocus
                   onChange={handleChange}
                   value={userData.user_name}
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                  onChange={handleChange}
-                  value={userData.user_name}
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -143,20 +132,21 @@ export default function Register() {
                   value={userData.password}
                 />
               </Grid>
-             
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2,}}
+              sx={{ mt: 3, mb: 2 }}
               onClick={handleSubmit}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end"  >
-              <Grid item >
-                <Link href="/login" className={styles.link}>Already have an account? Sign in</Link>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="/login" className={styles.link}>
+                  Already have an account? Sign in
+                </Link>
               </Grid>
             </Grid>
           </Box>

@@ -15,7 +15,9 @@ export default function useModal() {
         try {
         console.log('runing activity in try');
             const  data  = await axios.delete(`${url}api/track/${deleteId}`)
-            if (data.success) {
+            console.log("usemodal delete",data.data.success)
+            if (data.data.success) {
+                
                 successMessage('Activity Deleted')
                 router.push('/dashboard/activities')
             } else {

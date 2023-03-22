@@ -5,19 +5,19 @@ import DashboardLayout from '../../../components/layouts/dashboardLayout/Dashboa
 import { url } from '../../../utils/url';
 
 export async function getServerSideProps(context){
-  const {trackId} = context.params;
-  console.log("context",trackId);
-  const res = await axios.get(`${url}api/track/${trackId}`);
-  console.log(res);
+
+  const id = context.params.id;
+  const res = await axios.get(`${url}api/track/${id}`);
+  console.log(res.data);
   if (!res.status) { return { props: { track: '' } } }
   return {
-    props: { track: res.data.data }
-  }
+      props: { track: res.data.data }
+    }
 }
 
 export default function UpdateActivity({track}) {
   console.log("updatetrack add new",track)
-  return (<ActivityForm exercise={track}/>)
+  return (<ActivityForm track={track}/>)
 }
 
 
