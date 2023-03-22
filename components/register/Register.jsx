@@ -140,12 +140,12 @@ export default function Register() {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleSubmit}
             >
-              Sign Up
+              Register
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" className={styles.link}>
-                  Already have an account? Sign in
+                  Already have an account? Login
                 </Link>
               </Grid>
             </Grid>

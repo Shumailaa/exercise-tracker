@@ -93,7 +93,7 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleSubmit}
             >
-              Sign In
+              Login
             </Button>
             <Grid container>
               <Grid item xs>
@@ -103,7 +103,7 @@ export default function Login() {
               </Grid>
               <Grid item>
                 <Link href="/register" className={styles.link}>
-                  Dont have an account? Sign Up
+                  Dont have an account? Register
                 </Link>
               </Grid>
             </Grid>
